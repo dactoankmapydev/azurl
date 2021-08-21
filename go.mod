@@ -1,3 +1,3 @@
-module ourl
+module shareurl
 
 go 1.17
