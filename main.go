@@ -1,11 +1,12 @@
 package main
 
 import (
-	"izurl/db"
-	"izurl/handler"
-	"izurl/log"
-	"izurl/repository/repo_impl"
-	"izurl/router"
+	"azurl/db"
+	"azurl/handler"
+	"azurl/log"
+	"azurl/repository/repo_impl"
+	"azurl/router"
+
 	"os"
 
 	"github.com/joho/godotenv"
@@ -36,14 +37,14 @@ func main() {
 
 	e := echo.New()
 
-	itemHandler := handler.ItemHandler{
-		ItemRepo: repo_impl.NewRedisRepo(client),
-		Logger:   log,
+	shortHandler := handler.ShortHandler{
+		ShortRepo: repo_impl.NewRedisRepo(client),
+		Logger:    log,
 	}
 
 	api := router.API{
-		Echo:        e,
-		ItemHandler: itemHandler,
+		Echo:         e,
+		ShortHandler: shortHandler,
 	}
 	api.SetupRouter()
 

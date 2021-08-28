@@ -1,9 +1,10 @@
 package repo_impl
 
 import (
-	"izurl/db"
-	"izurl/model"
-	"izurl/repository"
+	"azurl/db"
+	"azurl/model"
+	"azurl/repository"
+
 	"time"
 )
 
@@ -11,7 +12,7 @@ type RedisRepoImpl struct {
 	client *db.Redis
 }
 
-func NewRedisRepo(client *db.Redis) repository.ItemRepo {
+func NewRedisRepo(client *db.Redis) repository.ShortRepo {
 	return &RedisRepoImpl{
 		client: client,
 	}
@@ -25,7 +26,7 @@ func (rp *RedisRepoImpl) Load(string) (string, error) {
 	return "", nil
 }
 
-func (rp *RedisRepoImpl) LoadInfo(string) (*model.Item, error) {
+func (rp *RedisRepoImpl) LoadInfo(string) (*model.Url, error) {
 	return nil, nil
 }
 

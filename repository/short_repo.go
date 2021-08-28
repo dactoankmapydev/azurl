@@ -1,13 +1,14 @@
 package repository
 
 import (
-	"izurl/model"
+	"azurl/model"
+
 	"time"
 )
 
-type ItemRepo interface {
+type ShortRepo interface {
 	Save(string, time.Time) (string, error)
 	Load(string) (string, error)
-	LoadInfo(string) (*model.Item, error)
+	LoadInfo(string) (*model.Url, error)
 	Close() error
 }

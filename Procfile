@@ -1,1 +1,1 @@
-web: bin/izurl
+web: bin/azurl
