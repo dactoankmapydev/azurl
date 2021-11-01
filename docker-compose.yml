@@ -9,10 +9,15 @@ services:
     ports:
       - '3000:3000'
     links:
+      - db
       - redis
+
+  db:
+    image: postgres
+    ports:
+      - '5432:5432'
+      
   redis:
     image: redis
     ports:
       - '6379:6379'
-    environment:
-      SERVICE_TAGS: redis-cluster:test
