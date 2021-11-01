@@ -43,6 +43,25 @@ func main() {
 	}
 	client.NewRedis()
 
+	// postgres details
+	host := os.Getenv("DB_HOST")
+	port := os.Getenv("DB_PORT")
+	password := os.Getenv("DB_PASSWORD")
+	username := os.Getenv("DB_USERNAME")
+	dbname := os.Getenv("DB_NAME")
+
+	// connect postgres
+	sql := &db.Sql{
+		Host:     host,
+		Port:     port,
+		UserName: username,
+		Password: password,
+		DbName:   dbname,
+		Logger:   log,
+	}
+	sql.Connect()
+	defer sql.Close()
+
 	e := echo.New()
 
 	shortHandler := handler.ShortHandler{
